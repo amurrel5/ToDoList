@@ -40,12 +40,19 @@ struct ContentView: View {
                         Text(toDoItem.title)
                     }
                 }
+                .onDelete(perform: deleteToDo)
             }
             .listStyle(.plain)
         }
         
         if showNewTask {
             NewToDoView(showNewTask: $showNewTask, toDoItem: ToDoItem(title: "", isImportant: false))
+        }
+    }
+    func deleteToDo(at offsets: IndexSet){
+        for index in offsets {
+            let toDo = toDos[index]
+            modelContext.delete(toDo)
         }
     }
 }
