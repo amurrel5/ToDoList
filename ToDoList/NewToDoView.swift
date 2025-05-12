@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct NewToDoView: View {
+    @State private var title = ""
+    @State private var isImportant = false
+    
     var body: some View {
         Text("Task title:")
         
-        TextField("Enter the task description...", text:  Value)
+        TextField("Enter the task description...", text:  $title)
             .padding()
             .background(Color(.systemGroupedBackground))
             .cornerRadius(15)
             .padding()
         
-        Toggle(isOn: Is On) {
+        Toggle(isOn: $isImportant) {
             Text("Is it important?")
         }
         .padding()
@@ -25,6 +28,7 @@ struct NewToDoView: View {
         Button {
         } label: {
             Text("Save")
+
         }
         
     }
